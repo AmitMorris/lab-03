@@ -40,26 +40,3 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
-//class CityRepository {
-//    private val _cities = mutableStateListOf(
-//        City("Edmonton", "AB"),
-//        City("Vancouver", "BC"),
-//        City("Toronto", "ON")
-//    )
-//
-//
-//    val cities: List<City>
-//        get() = _cities
-//
-//    fun addCity(city: City) {
-//        _cities.add(city)
-//    }
-//
-//    fun editCity(oldCity: City, newCity: City) {
-//        val _index = _cities.indexOf(oldCity)
-//        if (_index != -1) {
-//            _cities[_index] = newCity
-//        }
-//    }
-//}
