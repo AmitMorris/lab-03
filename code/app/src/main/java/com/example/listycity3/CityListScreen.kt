@@ -52,7 +52,12 @@ fun CityListScreen(
         ) {
             FloatingActionButton(
                 modifier = Modifier.padding(16.dp),
-                onClick = {showAddCityFields = !showAddCityFields}
+                onClick = {
+                    showAddCityFields = !showAddCityFields
+                    showEditCityFields = false
+                    updatedCityName = ""
+                    updatedProvinceName = ""
+                }
             ) {
                 Text("+")
             }
@@ -95,6 +100,8 @@ fun CityListScreen(
                         }
                         newCityName = ""
                         newProvinceName = ""
+                        updatedCityName = ""
+                        updatedProvinceName = ""
                         showEditCityFields = false
                     }
                 ) {
@@ -149,8 +156,13 @@ fun CityListScreen(
                 CityRow(city = city, onClick = {
                     selectedCity = city
                     showEditCityFields = true
-                    updatedCityName = city.name
-                    updatedProvinceName = city.province
+                    if (city.name == updatedCityName && city.province == updatedProvinceName) {
+                        showEditCityFields = false
+                    } else {
+                        showAddCityFields = false
+                        updatedCityName = city.name
+                        updatedProvinceName = city.province
+                    }
                 })
 
                 if (index < cities.lastIndex) {
