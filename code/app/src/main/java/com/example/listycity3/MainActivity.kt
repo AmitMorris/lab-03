@@ -14,6 +14,7 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -30,6 +31,8 @@ class MainActivity : ComponentActivity() {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     CityListScreen(
                         cities = cityRepository.cities,
+                        onAddCity = {cityRepository.addCity(it)},
+                        onEditCity = {oldCity, newCity -> cityRepository.editCity(oldCity, newCity)},
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
@@ -37,3 +40,26 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
+//class CityRepository {
+//    private val _cities = mutableStateListOf(
+//        City("Edmonton", "AB"),
+//        City("Vancouver", "BC"),
+//        City("Toronto", "ON")
+//    )
+//
+//
+//    val cities: List<City>
+//        get() = _cities
+//
+//    fun addCity(city: City) {
+//        _cities.add(city)
+//    }
+//
+//    fun editCity(oldCity: City, newCity: City) {
+//        val _index = _cities.indexOf(oldCity)
+//        if (_index != -1) {
+//            _cities[_index] = newCity
+//        }
+//    }
+//}
